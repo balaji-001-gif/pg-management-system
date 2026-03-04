@@ -1,6 +1,6 @@
 {
     "charts": [],
-    "content": "[{\"id\":\"header_1\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>PG Management Dashboard</b></span>\",\"col\":12}},{\"id\":\"nc_1\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Total Tenants\",\"col\":4}},{\"id\":\"nc_2\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Available Rooms\",\"col\":4}},{\"id\":\"nc_3\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Available Beds\",\"col\":4}},{\"id\":\"nc_4\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Pending Room Bookings\",\"col\":4}},{\"id\":\"nc_5\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Overdue Payments\",\"col\":4}},{\"id\":\"nc_6\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Total Revenue\",\"col\":4}},{\"id\":\"nc_7\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Open Tickets\",\"col\":4}},{\"id\":\"header_2\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Quick Access</b></span>\",\"col\":12}},{\"id\":\"shortcut_0\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"PG Tenant\",\"col\":4}},{\"id\":\"shortcuts_section\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"PG Room\",\"col\":4}},{\"id\":\"shortcut_2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"PG Mess\",\"col\":4}},{\"id\":\"shortcut_3\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"PG Room Booking\",\"col\":4}},{\"id\":\"shortcut_4\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"PG Mess Booking\",\"col\":4}},{\"id\":\"shortcut_7\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"PG Payment\",\"col\":4}},{\"id\":\"shortcut_5\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"PG Announcement\",\"col\":4}},{\"id\":\"shortcut_6\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"PG Ticket\",\"col\":4}}]",
+    "content": "[{\"id\":\"header_1\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Quick Access</b></span>\",\"col\":12}},{\"id\":\"shortcut_0\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"PG Tenant\",\"col\":4}},{\"id\":\"shortcut_1\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"PG Room\",\"col\":4}},{\"id\":\"shortcut_2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"PG Mess\",\"col\":4}},{\"id\":\"shortcut_3\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"PG Room Booking\",\"col\":4}},{\"id\":\"shortcut_4\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"PG Mess Booking\",\"col\":4}},{\"id\":\"shortcut_5\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"PG Payment\",\"col\":4}},{\"id\":\"shortcut_6\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"PG Announcement\",\"col\":4}},{\"id\":\"shortcut_7\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"PG Ticket\",\"col\":4}}]",
     "creation": "2024-01-01 00:00:00.000000",
     "custom_blocks": [],
     "doctype": "Workspace",
@@ -154,53 +154,7 @@
     "modified_by": "Administrator",
     "module": "PG Management",
     "name": "PG Management",
-    "number_cards": [
-        {
-            "color": "Blue",
-            "document_type": "PG Tenant",
-            "filters_json": "{}",
-            "function": "Count",
-            "label": "Total Tenants",
-            "show_percentage_stats": 1,
-            "stats_time_interval": "Monthly"
-        },
-        {
-            "color": "Green",
-            "document_type": "PG Room",
-            "filters_json": "{\"status\": \"Available\"}",
-            "function": "Count",
-            "label": "Available Rooms",
-            "show_percentage_stats": 1,
-            "stats_time_interval": "Monthly"
-        },
-        {
-            "color": "Orange",
-            "document_type": "PG Room Booking",
-            "filters_json": "{\"status\": \"Pending\"}",
-            "function": "Count",
-            "label": "Pending Room Bookings",
-            "show_percentage_stats": 1,
-            "stats_time_interval": "Monthly"
-        },
-        {
-            "color": "Red",
-            "document_type": "PG Payment",
-            "filters_json": "{\"status\": \"Overdue\"}",
-            "function": "Count",
-            "label": "Overdue Payments",
-            "show_percentage_stats": 1,
-            "stats_time_interval": "Monthly"
-        },
-        {
-            "color": "Purple",
-            "document_type": "PG Ticket",
-            "filters_json": "{\"status\": \"Open\"}",
-            "function": "Count",
-            "label": "Open Tickets",
-            "show_percentage_stats": 1,
-            "stats_time_interval": "Monthly"
-        }
-    ],
+    "number_cards": [],
     "owner": "Administrator",
     "parent_page": "",
     "public": 1,
