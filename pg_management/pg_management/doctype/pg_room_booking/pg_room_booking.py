@@ -23,7 +23,7 @@ class PGRoomBooking(Document):
 			existing = frappe.db.exists(
 				"PG Room Booking",
 				{
-					"tenant": self.tenant,
+					"pg_tenant": self.pg_tenant,
 					"status": ["in", ["Pending", "Approved"]],
 					"name": ["!=", self.name],
 				},
@@ -31,7 +31,7 @@ class PGRoomBooking(Document):
 			if existing:
 				frappe.throw(
 					_("Tenant {0} already has an active room booking: {1}").format(
-						self.tenant, existing
+						self.pg_tenant, existing
 					)
 				)
 

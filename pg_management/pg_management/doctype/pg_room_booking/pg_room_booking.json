@@ -5,8 +5,10 @@
     "doctype": "DocType",
     "engine": "InnoDB",
     "field_order": [
+        "pg_tenant",
         "tenant",
         "tenant_name",
+        "aadhaar_number",
         "room",
         "room_name",
         "column_break_1",
@@ -19,19 +21,34 @@
     ],
     "fields": [
         {
-            "fieldname": "tenant",
+            "fieldname": "pg_tenant",
             "fieldtype": "Link",
             "in_list_view": 1,
-            "label": "Tenant",
-            "options": "User",
+            "label": "PG Tenant",
+            "options": "PG Tenant",
             "reqd": 1
         },
         {
-            "fetch_from": "tenant.full_name",
+            "fetch_from": "pg_tenant.user",
+            "fieldname": "tenant",
+            "fieldtype": "Link",
+            "label": "User",
+            "options": "User",
+            "read_only": 1
+        },
+        {
+            "fetch_from": "pg_tenant.tenant_name",
             "fieldname": "tenant_name",
             "fieldtype": "Data",
             "in_list_view": 1,
             "label": "Tenant Name",
+            "read_only": 1
+        },
+        {
+            "fetch_from": "pg_tenant.aadhaar_number",
+            "fieldname": "aadhaar_number",
+            "fieldtype": "Data",
+            "label": "Aadhaar Number",
             "read_only": 1
         },
         {

@@ -1,0 +1,197 @@
+{
+    "actions": [],
+    "autoname": "format:PG-TNT-{####}",
+    "creation": "2024-01-01 00:00:00.000000",
+    "doctype": "DocType",
+    "engine": "InnoDB",
+    "field_order": [
+        "tenant_name",
+        "email",
+        "phone",
+        "column_break_1",
+        "user",
+        "gender",
+        "date_of_birth",
+        "section_break_aadhaar",
+        "aadhaar_number",
+        "aadhaar_validation_status",
+        "column_break_aadhaar",
+        "aadhaar_card",
+        "section_break_address",
+        "permanent_address",
+        "column_break_address",
+        "city",
+        "state",
+        "pincode",
+        "section_break_emergency",
+        "emergency_contact_name",
+        "emergency_contact_phone"
+    ],
+    "fields": [
+        {
+            "fieldname": "tenant_name",
+            "fieldtype": "Data",
+            "in_list_view": 1,
+            "label": "Tenant Name",
+            "reqd": 1
+        },
+        {
+            "fieldname": "email",
+            "fieldtype": "Data",
+            "in_list_view": 1,
+            "label": "Email",
+            "options": "Email"
+        },
+        {
+            "fieldname": "phone",
+            "fieldtype": "Data",
+            "in_list_view": 1,
+            "label": "Phone",
+            "options": "Phone"
+        },
+        {
+            "fieldname": "column_break_1",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "user",
+            "fieldtype": "Link",
+            "label": "Linked User",
+            "options": "User"
+        },
+        {
+            "fieldname": "gender",
+            "fieldtype": "Select",
+            "label": "Gender",
+            "options": "\nMale\nFemale\nOther"
+        },
+        {
+            "fieldname": "date_of_birth",
+            "fieldtype": "Date",
+            "label": "Date of Birth"
+        },
+        {
+            "collapsible": 0,
+            "fieldname": "section_break_aadhaar",
+            "fieldtype": "Section Break",
+            "label": "Aadhaar Verification"
+        },
+        {
+            "fieldname": "aadhaar_number",
+            "fieldtype": "Data",
+            "in_list_view": 1,
+            "label": "Aadhaar Number",
+            "length": 12,
+            "reqd": 1,
+            "unique": 1
+        },
+        {
+            "default": "Not Validated",
+            "fieldname": "aadhaar_validation_status",
+            "fieldtype": "Select",
+            "in_list_view": 1,
+            "label": "Aadhaar Validation Status",
+            "options": "Not Validated\nValid\nInvalid",
+            "read_only": 1
+        },
+        {
+            "fieldname": "column_break_aadhaar",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "aadhaar_card",
+            "fieldtype": "Attach Image",
+            "label": "Aadhaar Card (Upload)"
+        },
+        {
+            "fieldname": "section_break_address",
+            "fieldtype": "Section Break",
+            "label": "Address"
+        },
+        {
+            "fieldname": "permanent_address",
+            "fieldtype": "Small Text",
+            "label": "Permanent Address"
+        },
+        {
+            "fieldname": "column_break_address",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "city",
+            "fieldtype": "Data",
+            "label": "City"
+        },
+        {
+            "fieldname": "state",
+            "fieldtype": "Data",
+            "label": "State"
+        },
+        {
+            "fieldname": "pincode",
+            "fieldtype": "Data",
+            "label": "Pincode"
+        },
+        {
+            "fieldname": "section_break_emergency",
+            "fieldtype": "Section Break",
+            "label": "Emergency Contact"
+        },
+        {
+            "fieldname": "emergency_contact_name",
+            "fieldtype": "Data",
+            "label": "Emergency Contact Name"
+        },
+        {
+            "fieldname": "emergency_contact_phone",
+            "fieldtype": "Data",
+            "label": "Emergency Contact Phone",
+            "options": "Phone"
+        }
+    ],
+    "index_web_pages_for_search": 1,
+    "links": [],
+    "modified": "2024-01-01 00:00:00.000000",
+    "modified_by": "Administrator",
+    "module": "PG Management",
+    "name": "PG Tenant",
+    "naming_rule": "Expression (old style)",
+    "owner": "Administrator",
+    "permissions": [
+        {
+            "create": 1,
+            "delete": 1,
+            "email": 1,
+            "export": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "System Manager",
+            "share": 1,
+            "write": 1
+        },
+        {
+            "create": 1,
+            "delete": 1,
+            "email": 1,
+            "export": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "PG Admin",
+            "share": 1,
+            "write": 1
+        },
+        {
+            "create": 1,
+            "read": 1,
+            "role": "PG Tenant",
+            "write": 1
+        }
+    ],
+    "sort_field": "modified",
+    "sort_order": "DESC",
+    "states": [],
+    "title_field": "tenant_name",
+    "track_changes": 1
+}
