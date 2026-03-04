@@ -9,6 +9,18 @@ app_version = "1.0.0"
 # Required apps
 required_apps = ["frappe"]
 
+# Fixtures — export these DocTypes with the app
+fixtures = [
+	{
+		"dt": "Number Card",
+		"filters": [["module", "=", "PG Management"]],
+	},
+]
+
+# Setup after install
+after_install = "pg_management.pg_management.install.after_install"
+after_migrate = "pg_management.pg_management.install.after_install"
+
 # Includes in <head>
 # ------------------
 
