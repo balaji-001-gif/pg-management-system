@@ -17,10 +17,16 @@ def get_pg_dashboard_data():
 	# --- Room Stats ---
 	data["total_rooms"] = frappe.db.count("PG Room")
 	data["available_rooms"] = frappe.db.count("PG Room", {"status": "Available"})
-	data["occupied_rooms"] = frappe.db.count("PG Room", {"status": "Not Available"})
-	data["occupancy_rate"] = (
-		round((data["occupied_rooms"] / data["total_rooms"]) * 100, 1)
-		if data["total_rooms"] > 0
+	data["partially_occupied_rooms"] = frappe.db.count("PG Room", {"status": "Partially Occupied"})
+	data["fully_occupied_rooms"] = frappe.db.count("PG Room", {"status": "Fully Occupied"})
+
+	# Bed-level stats
+	data["total_beds"] = frappe.db.get_value("PG Room", filters={}, fieldname="sum(total_beds)") or 0
+	data["occupied_beds"] = frappe.db.get_value("PG Room", filters={}, fieldname="sum(occupied_beds)") or 0
+	data["available_beds"] = frappe.db.get_value("PG Room", filters={}, fieldname="sum(available_beds)") or 0
+	data["bed_occupancy_rate"] = (
+		round((data["occupied_beds"] / data["total_beds"]) * 100, 1)
+		if data["total_beds"] > 0
 		else 0
 	)
 

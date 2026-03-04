@@ -11,6 +11,13 @@
         "column_break_1",
         "status",
         "price",
+        "price_per_bed",
+        "section_break_beds",
+        "total_beds",
+        "occupied_beds",
+        "available_beds",
+        "column_break_beds",
+        "occupancy_status",
         "section_break_1",
         "description",
         "image"
@@ -47,15 +54,62 @@
             "fieldtype": "Select",
             "in_list_view": 1,
             "label": "Status",
-            "options": "Available\nNot Available",
+            "options": "Available\nPartially Occupied\nFully Occupied",
             "reqd": 1
         },
         {
             "fieldname": "price",
             "fieldtype": "Currency",
             "in_list_view": 1,
-            "label": "Price",
+            "label": "Room Price (Total)",
             "reqd": 1
+        },
+        {
+            "fieldname": "price_per_bed",
+            "fieldtype": "Currency",
+            "in_list_view": 1,
+            "label": "Price Per Bed",
+            "description": "Leave blank to auto-calculate from Room Price / Total Beds"
+        },
+        {
+            "fieldname": "section_break_beds",
+            "fieldtype": "Section Break",
+            "label": "Bed Capacity"
+        },
+        {
+            "default": "1",
+            "fieldname": "total_beds",
+            "fieldtype": "Int",
+            "in_list_view": 1,
+            "label": "Total Beds",
+            "reqd": 1
+        },
+        {
+            "default": "0",
+            "fieldname": "occupied_beds",
+            "fieldtype": "Int",
+            "in_list_view": 1,
+            "label": "Occupied Beds",
+            "read_only": 1
+        },
+        {
+            "default": "0",
+            "fieldname": "available_beds",
+            "fieldtype": "Int",
+            "in_list_view": 1,
+            "label": "Available Beds",
+            "read_only": 1
+        },
+        {
+            "fieldname": "column_break_beds",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "occupancy_status",
+            "fieldtype": "Data",
+            "label": "Occupancy",
+            "read_only": 1,
+            "description": "e.g. 2/4 beds occupied"
         },
         {
             "fieldname": "section_break_1",

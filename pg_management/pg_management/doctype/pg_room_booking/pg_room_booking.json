@@ -11,6 +11,8 @@
         "aadhaar_number",
         "room",
         "room_name",
+        "bed_number",
+        "total_beds",
         "column_break_1",
         "status",
         "price",
@@ -64,6 +66,20 @@
             "fieldname": "room_name",
             "fieldtype": "Data",
             "label": "Room Name",
+            "read_only": 1
+        },
+        {
+            "fieldname": "bed_number",
+            "fieldtype": "Int",
+            "in_list_view": 1,
+            "label": "Bed Number",
+            "description": "Auto-assigned bed number in the room"
+        },
+        {
+            "fetch_from": "room.total_beds",
+            "fieldname": "total_beds",
+            "fieldtype": "Int",
+            "label": "Total Beds in Room",
             "read_only": 1
         },
         {
