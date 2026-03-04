@@ -1,0 +1,287 @@
+<style>
+    .receipt-container {
+        font-family: Arial, sans-serif;
+        max-width: 700px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 2px solid #333;
+    }
+    .receipt-header {
+        text-align: center;
+        border-bottom: 2px solid #333;
+        padding-bottom: 15px;
+        margin-bottom: 15px;
+    }
+    .receipt-header h1 {
+        margin: 0;
+        font-size: 24px;
+        color: #2c3e50;
+    }
+    .receipt-header h2 {
+        margin: 5px 0;
+        font-size: 16px;
+        color: #555;
+        font-weight: normal;
+    }
+    .receipt-title {
+        text-align: center;
+        background-color: #2c3e50;
+        color: white;
+        padding: 8px;
+        margin: 15px 0;
+        font-size: 18px;
+        font-weight: bold;
+    }
+    .receipt-info {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 15px;
+    }
+    .receipt-info-left, .receipt-info-right {
+        width: 48%;
+    }
+    .info-row {
+        display: flex;
+        margin-bottom: 8px;
+    }
+    .info-label {
+        font-weight: bold;
+        min-width: 140px;
+        color: #555;
+    }
+    .info-value {
+        color: #333;
+    }
+    .amount-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 15px 0;
+    }
+    .amount-table th, .amount-table td {
+        border: 1px solid #ddd;
+        padding: 10px 12px;
+        text-align: left;
+    }
+    .amount-table th {
+        background-color: #2c3e50;
+        color: white;
+        font-weight: bold;
+    }
+    .amount-table tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+    .amount-table .total-row {
+        font-weight: bold;
+        background-color: #ecf0f1;
+        font-size: 16px;
+    }
+    .amount-table .total-row td {
+        border-top: 2px solid #333;
+    }
+    .status-badge {
+        display: inline-block;
+        padding: 4px 12px;
+        border-radius: 4px;
+        font-weight: bold;
+        font-size: 14px;
+    }
+    .status-paid { background-color: #27ae60; color: white; }
+    .status-partial { background-color: #f39c12; color: white; }
+    .status-overdue { background-color: #e74c3c; color: white; }
+    .status-draft { background-color: #95a5a6; color: white; }
+    .receipt-footer {
+        margin-top: 30px;
+        border-top: 1px solid #ddd;
+        padding-top: 15px;
+    }
+    .signature-section {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 40px;
+    }
+    .signature-box {
+        text-align: center;
+        width: 200px;
+    }
+    .signature-line {
+        border-top: 1px solid #333;
+        margin-top: 50px;
+        padding-top: 5px;
+    }
+    .receipt-note {
+        text-align: center;
+        font-size: 11px;
+        color: #999;
+        margin-top: 20px;
+        font-style: italic;
+    }
+</style>
+
+<div class="receipt-container">
+    <!-- Header -->
+    <div class="receipt-header">
+        <h1>PG MANAGEMENT</h1>
+        <h2>Paying Guest Accommodation</h2>
+    </div>
+
+    <!-- Title -->
+    <div class="receipt-title">RENT RECEIPT</div>
+
+    <!-- Receipt Info -->
+    <div class="receipt-info">
+        <div class="receipt-info-left">
+            <div class="info-row">
+                <span class="info-label">Receipt No:</span>
+                <span class="info-value"><b>{{ doc.receipt_number or doc.name }}</b></span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Date:</span>
+                <span class="info-value">{{ frappe.utils.formatdate(doc.payment_date, "dd-MM-yyyy") }}</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Payment Mode:</span>
+                <span class="info-value">{{ doc.payment_mode }}</span>
+            </div>
+            {% if doc.reference_number %}
+            <div class="info-row">
+                <span class="info-label">Ref / Txn No:</span>
+                <span class="info-value">{{ doc.reference_number }}</span>
+            </div>
+            {% endif %}
+        </div>
+        <div class="receipt-info-right">
+            <div class="info-row">
+                <span class="info-label">Tenant Name:</span>
+                <span class="info-value"><b>{{ doc.tenant_name }}</b></span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Aadhaar No:</span>
+                <span class="info-value">{{ doc.aadhaar_number or "—" }}</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Period:</span>
+                <span class="info-value">{{ doc.payment_for_month }} {{ doc.payment_for_year }}</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Status:</span>
+                <span class="info-value">
+                    {% if doc.status == "Paid" %}
+                        <span class="status-badge status-paid">PAID</span>
+                    {% elif doc.status == "Partially Paid" %}
+                        <span class="status-badge status-partial">PARTIAL</span>
+                    {% elif doc.status == "Overdue" %}
+                        <span class="status-badge status-overdue">OVERDUE</span>
+                    {% else %}
+                        <span class="status-badge status-draft">{{ doc.status | upper }}</span>
+                    {% endif %}
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Room & Mess Info -->
+    {% if doc.room_name or doc.mess_name %}
+    <div class="receipt-info">
+        {% if doc.room_name %}
+        <div class="receipt-info-left">
+            <div class="info-row">
+                <span class="info-label">Room:</span>
+                <span class="info-value">{{ doc.room_name }}</span>
+            </div>
+        </div>
+        {% endif %}
+        {% if doc.mess_name %}
+        <div class="receipt-info-right">
+            <div class="info-row">
+                <span class="info-label">Mess:</span>
+                <span class="info-value">{{ doc.mess_name }}</span>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    {% endif %}
+
+    <!-- Amount Table -->
+    <table class="amount-table">
+        <thead>
+            <tr>
+                <th>Description</th>
+                <th style="text-align: right;">Amount (₹)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if doc.rent_amount %}
+            <tr>
+                <td>Room Rent</td>
+                <td style="text-align: right;">{{ frappe.utils.fmt_money(doc.rent_amount, currency="INR") }}</td>
+            </tr>
+            {% endif %}
+            {% if doc.mess_amount %}
+            <tr>
+                <td>Mess / Food Charges</td>
+                <td style="text-align: right;">{{ frappe.utils.fmt_money(doc.mess_amount, currency="INR") }}</td>
+            </tr>
+            {% endif %}
+            {% if doc.deposit_amount %}
+            <tr>
+                <td>Security Deposit</td>
+                <td style="text-align: right;">{{ frappe.utils.fmt_money(doc.deposit_amount, currency="INR") }}</td>
+            </tr>
+            {% endif %}
+            {% if doc.maintenance_amount %}
+            <tr>
+                <td>Maintenance Charges</td>
+                <td style="text-align: right;">{{ frappe.utils.fmt_money(doc.maintenance_amount, currency="INR") }}</td>
+            </tr>
+            {% endif %}
+            {% if doc.other_amount %}
+            <tr>
+                <td>Other Charges</td>
+                <td style="text-align: right;">{{ frappe.utils.fmt_money(doc.other_amount, currency="INR") }}</td>
+            </tr>
+            {% endif %}
+            {% if not (doc.rent_amount or doc.mess_amount or doc.deposit_amount or doc.maintenance_amount or doc.other_amount) %}
+            <tr>
+                <td>{{ doc.payment_type }}</td>
+                <td style="text-align: right;">{{ frappe.utils.fmt_money(doc.amount, currency="INR") }}</td>
+            </tr>
+            {% endif %}
+            <tr class="total-row">
+                <td>Total Amount</td>
+                <td style="text-align: right;">{{ frappe.utils.fmt_money(doc.total_amount or doc.amount, currency="INR") }}</td>
+            </tr>
+            {% if doc.paid_amount and doc.paid_amount != doc.total_amount %}
+            <tr>
+                <td>Paid Amount</td>
+                <td style="text-align: right;">{{ frappe.utils.fmt_money(doc.paid_amount, currency="INR") }}</td>
+            </tr>
+            <tr class="total-row">
+                <td>Outstanding Amount</td>
+                <td style="text-align: right;">{{ frappe.utils.fmt_money(doc.outstanding_amount, currency="INR") }}</td>
+            </tr>
+            {% endif %}
+        </tbody>
+    </table>
+
+    <!-- Remarks -->
+    {% if doc.remarks %}
+    <div style="margin: 10px 0;">
+        <span class="info-label">Remarks:</span> {{ doc.remarks }}
+    </div>
+    {% endif %}
+
+    <!-- Signature Section -->
+    <div class="signature-section">
+        <div class="signature-box">
+            <div class="signature-line">Tenant Signature</div>
+        </div>
+        <div class="signature-box">
+            <div class="signature-line">Authorized Signature</div>
+        </div>
+    </div>
+
+    <!-- Footer Note -->
+    <div class="receipt-note">
+        This is a computer-generated receipt. For any discrepancies, please contact the PG administration.
+    </div>
+</div>

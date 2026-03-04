@@ -1,0 +1,301 @@
+{
+    "actions": [],
+    "autoname": "format:PG-PAY-{####}",
+    "creation": "2024-01-01 00:00:00.000000",
+    "doctype": "DocType",
+    "engine": "InnoDB",
+    "field_order": [
+        "pg_tenant",
+        "tenant_name",
+        "aadhaar_number",
+        "column_break_1",
+        "payment_date",
+        "payment_for_month",
+        "payment_for_year",
+        "section_break_payment",
+        "payment_type",
+        "payment_mode",
+        "column_break_2",
+        "amount",
+        "status",
+        "section_break_room",
+        "room_booking",
+        "room_name",
+        "column_break_room",
+        "mess_booking",
+        "mess_name",
+        "section_break_details",
+        "reference_number",
+        "column_break_3",
+        "receipt_number",
+        "section_break_notes",
+        "remarks",
+        "section_break_amount",
+        "rent_amount",
+        "mess_amount",
+        "deposit_amount",
+        "maintenance_amount",
+        "other_amount",
+        "column_break_amount",
+        "total_amount",
+        "paid_amount",
+        "outstanding_amount"
+    ],
+    "fields": [
+        {
+            "fieldname": "pg_tenant",
+            "fieldtype": "Link",
+            "in_list_view": 1,
+            "label": "Tenant",
+            "options": "PG Tenant",
+            "reqd": 1
+        },
+        {
+            "fetch_from": "pg_tenant.tenant_name",
+            "fieldname": "tenant_name",
+            "fieldtype": "Data",
+            "in_list_view": 1,
+            "label": "Tenant Name",
+            "read_only": 1
+        },
+        {
+            "fetch_from": "pg_tenant.aadhaar_number",
+            "fieldname": "aadhaar_number",
+            "fieldtype": "Data",
+            "label": "Aadhaar Number",
+            "read_only": 1
+        },
+        {
+            "fieldname": "column_break_1",
+            "fieldtype": "Column Break"
+        },
+        {
+            "default": "Today",
+            "fieldname": "payment_date",
+            "fieldtype": "Date",
+            "in_list_view": 1,
+            "label": "Payment Date",
+            "reqd": 1
+        },
+        {
+            "fieldname": "payment_for_month",
+            "fieldtype": "Select",
+            "label": "Payment For Month",
+            "options": "January\nFebruary\nMarch\nApril\nMay\nJune\nJuly\nAugust\nSeptember\nOctober\nNovember\nDecember",
+            "reqd": 1
+        },
+        {
+            "fieldname": "payment_for_year",
+            "fieldtype": "Int",
+            "label": "Payment For Year",
+            "reqd": 1
+        },
+        {
+            "fieldname": "section_break_payment",
+            "fieldtype": "Section Break",
+            "label": "Payment Info"
+        },
+        {
+            "default": "Rent",
+            "fieldname": "payment_type",
+            "fieldtype": "Select",
+            "in_list_view": 1,
+            "label": "Payment Type",
+            "options": "Rent\nDeposit\nMaintenance\nMess Fee\nOther",
+            "reqd": 1
+        },
+        {
+            "default": "Cash",
+            "fieldname": "payment_mode",
+            "fieldtype": "Select",
+            "label": "Payment Mode",
+            "options": "Cash\nUPI\nBank Transfer\nCheque\nOnline\nOther",
+            "reqd": 1
+        },
+        {
+            "fieldname": "column_break_2",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "amount",
+            "fieldtype": "Currency",
+            "in_list_view": 1,
+            "label": "Amount",
+            "reqd": 1
+        },
+        {
+            "default": "Paid",
+            "fieldname": "status",
+            "fieldtype": "Select",
+            "in_list_view": 1,
+            "label": "Status",
+            "options": "Draft\nPaid\nPartially Paid\nOverdue\nCancelled",
+            "reqd": 1
+        },
+        {
+            "fieldname": "section_break_room",
+            "fieldtype": "Section Break",
+            "label": "Booking References"
+        },
+        {
+            "fieldname": "room_booking",
+            "fieldtype": "Link",
+            "label": "Room Booking",
+            "options": "PG Room Booking"
+        },
+        {
+            "fetch_from": "room_booking.room_name",
+            "fieldname": "room_name",
+            "fieldtype": "Data",
+            "label": "Room Name",
+            "read_only": 1
+        },
+        {
+            "fieldname": "column_break_room",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "mess_booking",
+            "fieldtype": "Link",
+            "label": "Mess Booking",
+            "options": "PG Mess Booking"
+        },
+        {
+            "fetch_from": "mess_booking.mess_name",
+            "fieldname": "mess_name",
+            "fieldtype": "Data",
+            "label": "Mess Name",
+            "read_only": 1
+        },
+        {
+            "fieldname": "section_break_details",
+            "fieldtype": "Section Break",
+            "label": "Transaction Details"
+        },
+        {
+            "fieldname": "reference_number",
+            "fieldtype": "Data",
+            "label": "Transaction / Reference Number"
+        },
+        {
+            "fieldname": "column_break_3",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "receipt_number",
+            "fieldtype": "Data",
+            "label": "Receipt Number",
+            "read_only": 1
+        },
+        {
+            "fieldname": "section_break_notes",
+            "fieldtype": "Section Break",
+            "label": "Notes"
+        },
+        {
+            "fieldname": "remarks",
+            "fieldtype": "Small Text",
+            "label": "Remarks"
+        },
+        {
+            "collapsible": 1,
+            "fieldname": "section_break_amount",
+            "fieldtype": "Section Break",
+            "label": "Amount Breakdown"
+        },
+        {
+            "default": "0",
+            "fieldname": "rent_amount",
+            "fieldtype": "Currency",
+            "label": "Rent Amount"
+        },
+        {
+            "default": "0",
+            "fieldname": "mess_amount",
+            "fieldtype": "Currency",
+            "label": "Mess Amount"
+        },
+        {
+            "default": "0",
+            "fieldname": "deposit_amount",
+            "fieldtype": "Currency",
+            "label": "Deposit Amount"
+        },
+        {
+            "default": "0",
+            "fieldname": "maintenance_amount",
+            "fieldtype": "Currency",
+            "label": "Maintenance Amount"
+        },
+        {
+            "default": "0",
+            "fieldname": "other_amount",
+            "fieldtype": "Currency",
+            "label": "Other Amount"
+        },
+        {
+            "fieldname": "column_break_amount",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "total_amount",
+            "fieldtype": "Currency",
+            "label": "Total Amount",
+            "read_only": 1
+        },
+        {
+            "fieldname": "paid_amount",
+            "fieldtype": "Currency",
+            "label": "Paid Amount"
+        },
+        {
+            "fieldname": "outstanding_amount",
+            "fieldtype": "Currency",
+            "label": "Outstanding Amount",
+            "read_only": 1
+        }
+    ],
+    "index_web_pages_for_search": 1,
+    "links": [],
+    "modified": "2024-01-01 00:00:00.000000",
+    "modified_by": "Administrator",
+    "module": "PG Management",
+    "name": "PG Payment",
+    "naming_rule": "Expression (old style)",
+    "owner": "Administrator",
+    "permissions": [
+        {
+            "create": 1,
+            "delete": 1,
+            "email": 1,
+            "export": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "System Manager",
+            "share": 1,
+            "write": 1
+        },
+        {
+            "create": 1,
+            "delete": 1,
+            "email": 1,
+            "export": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "PG Admin",
+            "share": 1,
+            "write": 1
+        },
+        {
+            "read": 1,
+            "role": "PG Tenant"
+        }
+    ],
+    "sort_field": "modified",
+    "sort_order": "DESC",
+    "states": [],
+    "title_field": "tenant_name",
+    "track_changes": 1
+}

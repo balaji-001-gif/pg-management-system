@@ -1,6 +1,6 @@
 {
     "charts": [],
-    "content": "[{\"id\":\"gCAoSC6xbK\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>PG Management</b></span>\",\"col\":12}},{\"id\":\"shortcut_0\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"PG Tenant\",\"col\":4}},{\"id\":\"shortcuts_section\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"PG Room\",\"col\":4}},{\"id\":\"shortcut_2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"PG Mess\",\"col\":4}},{\"id\":\"shortcut_3\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"PG Room Booking\",\"col\":4}},{\"id\":\"shortcut_4\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"PG Mess Booking\",\"col\":4}},{\"id\":\"shortcut_5\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"PG Announcement\",\"col\":4}},{\"id\":\"shortcut_6\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"PG Ticket\",\"col\":4}}]",
+    "content": "[{\"id\":\"gCAoSC6xbK\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>PG Management</b></span>\",\"col\":12}},{\"id\":\"shortcut_0\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"PG Tenant\",\"col\":4}},{\"id\":\"shortcuts_section\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"PG Room\",\"col\":4}},{\"id\":\"shortcut_2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"PG Mess\",\"col\":4}},{\"id\":\"shortcut_3\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"PG Room Booking\",\"col\":4}},{\"id\":\"shortcut_4\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"PG Mess Booking\",\"col\":4}},{\"id\":\"shortcut_7\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"PG Payment\",\"col\":4}},{\"id\":\"shortcut_5\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"PG Announcement\",\"col\":4}},{\"id\":\"shortcut_6\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"PG Ticket\",\"col\":4}}]",
     "creation": "2024-01-01 00:00:00.000000",
     "custom_blocks": [],
     "doctype": "Workspace",
@@ -88,6 +88,24 @@
         {
             "hidden": 0,
             "is_query_report": 0,
+            "label": "Payments & Receipts",
+            "link_count": 0,
+            "onboard": 0,
+            "type": "Card Break"
+        },
+        {
+            "hidden": 0,
+            "is_query_report": 0,
+            "label": "PG Payment",
+            "link_count": 0,
+            "link_to": "PG Payment",
+            "link_type": "DocType",
+            "onboard": 1,
+            "type": "Link"
+        },
+        {
+            "hidden": 0,
+            "is_query_report": 0,
             "label": "Communication",
             "link_count": 0,
             "onboard": 0,
@@ -118,7 +136,53 @@
     "modified_by": "Administrator",
     "module": "PG Management",
     "name": "PG Management",
-    "number_cards": [],
+    "number_cards": [
+        {
+            "color": "Blue",
+            "document_type": "PG Tenant",
+            "filters_json": "{}",
+            "function": "Count",
+            "label": "Total Tenants",
+            "show_percentage_stats": 1,
+            "stats_time_interval": "Monthly"
+        },
+        {
+            "color": "Green",
+            "document_type": "PG Room",
+            "filters_json": "{\"status\": \"Available\"}",
+            "function": "Count",
+            "label": "Available Rooms",
+            "show_percentage_stats": 1,
+            "stats_time_interval": "Monthly"
+        },
+        {
+            "color": "Orange",
+            "document_type": "PG Room Booking",
+            "filters_json": "{\"status\": \"Pending\"}",
+            "function": "Count",
+            "label": "Pending Room Bookings",
+            "show_percentage_stats": 1,
+            "stats_time_interval": "Monthly"
+        },
+        {
+            "color": "Red",
+            "document_type": "PG Payment",
+            "filters_json": "{\"status\": \"Overdue\"}",
+            "function": "Count",
+            "label": "Overdue Payments",
+            "show_percentage_stats": 1,
+            "stats_time_interval": "Monthly"
+        },
+        {
+            "color": "Purple",
+            "document_type": "PG Ticket",
+            "filters_json": "{\"status\": \"Open\"}",
+            "function": "Count",
+            "label": "Open Tickets",
+            "show_percentage_stats": 1,
+            "stats_time_interval": "Monthly"
+        }
+    ],
     "owner": "Administrator",
     "parent_page": "",
     "public": 1,
@@ -159,6 +223,13 @@
             "doc_view": "List",
             "label": "PG Mess Booking",
             "link_to": "PG Mess Booking",
+            "type": "DocType"
+        },
+        {
+            "color": "Pink",
+            "doc_view": "List",
+            "label": "PG Payment",
+            "link_to": "PG Payment",
             "type": "DocType"
         },
         {
